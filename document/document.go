@@ -21,10 +21,10 @@ import (
 	"strings"
 
 	"github.com/unidoc/unioffice"
-	"github.com/unidoc/unioffice/color"
+	_ "github.com/unidoc/unioffice/color"
 	"github.com/unidoc/unioffice/common"
 	"github.com/unidoc/unioffice/common/license"
-	"github.com/unidoc/unioffice/measurement"
+	_ "github.com/unidoc/unioffice/measurement"
 	"github.com/unidoc/unioffice/zippkg"
 
 	"github.com/unidoc/unioffice/schema/soo/dml"
@@ -181,7 +181,7 @@ func (d *Document) Save(w io.Writer) error {
 	dt := unioffice.DocTypeDocument
 
 	if !license.GetLicenseKey().IsLicensed() && flag.Lookup("test.v") == nil {
-		fmt.Println("Unlicensed version of UniOffice")
+		/*fmt.Println("Unlicensed version of UniOffice")
 		fmt.Println("- Get a license on https://unidoc.io")
 		hdr := d.AddHeader()
 		para := hdr.AddParagraph()
@@ -192,7 +192,7 @@ func (d *Document) Save(w io.Writer) error {
 		run.Properties().SetBold(true)
 		run.Properties().SetSize(14)
 		run.Properties().SetColor(color.Red)
-		d.BodySection().SetHeader(hdr, wml.ST_HdrFtrDefault)
+		d.BodySection().SetHeader(hdr, wml.ST_HdrFtrDefault)*/
 	}
 
 	z := zip.NewWriter(w)
